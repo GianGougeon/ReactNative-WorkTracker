@@ -1,0 +1,83 @@
+[
+    {
+        "id": "1",
+        "dia": "Martes",
+        "fecha": "28/2/2023",
+        "horasN": "9:30:00",
+        "horaE": "1:30:00",
+        "lugar": "MDP",
+        "info": "montaje de termica, fuente, swich red / cableado red con terminales"
+    },
+    {
+        "id": "2",
+        "dia": "Miércoles",
+        "fecha": "1/3/2023",
+        "horasN": "10:00:00",
+        "horaE": "2:00:00",
+        "lugar": "BUE",
+        "info": "configuración de router / instalación de software"
+    },
+    {
+        "id": "3",
+        "dia": "Jueves",
+        "fecha": "2/3/2023",
+        "horasN": "11:00:00",
+        "horaE": "3:00:00",
+        "lugar": "CBA",
+        "info": "instalación de cámara de seguridad / mantenimiento de servidor"
+    },
+    {
+        "id": "4",
+        "dia": "Viernes",
+        "fecha": "3/3/2023",
+        "horasN": "12:00:00",
+        "horaE": "4:00:00",
+        "lugar": "ROS",
+        "info": "soporte técnico / configuración de impresora"
+    },
+    {
+        "id": "5",
+        "dia": "Sábado",
+        "fecha": "4/3/2023",
+        "horasN": "13:00:00",
+        "horaE": "5:00:00",
+        "lugar": "LRV",
+        "info": "mantenimiento preventivo de computadoras / instalación de antivirus"
+    },
+    {
+        "id": "6",
+        "dia": "Domingo",
+        "fecha": "5/3/2023",
+        "horasN": "14:00:00",
+        "horaE": "6:00:00",
+        "lugar": "MDQ",
+        "info": "cambio de disco duro / reparación de pantalla"
+    },
+    {
+        "id": "7",
+        "dia": "Lunes",
+        "fecha": "6/3/2023",
+        "horasN": "15:00:00",
+        "horaE": "7:00:00",
+        "lugar": "Córdoba",
+        "info": "soporte técnico remoto / configuración de firewall"
+    },
+    {
+        "id": "8",
+        "dia": "Martes",
+        "fecha": "7/3/2023",
+        "horasN": "16:00:00",
+        "horaE": "8:00:00",
+        "lugar": "Rosario",
+        "info": "formación de usuarios / mantenimiento de red"
+    },
+    {
+        "id": "9",
+        "dia": "Miércoles",
+        "fecha": "8/3/2023",
+        "horasN": "17:00:00",
+        "horaE": "9:00:00",
+        "lugar": "La Plata",
+        "info": "despliegue de nuevo software / instalación de antivirus"
+    }
+]
