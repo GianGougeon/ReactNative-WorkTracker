@@ -1,72 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Button } from "react-native";
 import { styles } from "./Details.styles";
-const Details = (prop) => {
-    const { itemSelected, setItemsList, setItemSelected, itemsList } = prop;
-    const toggleReadStatus = () => {
-        if (!itemSelected) {
-            return; // Evita errores si itemSelected es null o undefined
-        }
-        // Crea una copia de la lista de elementos
-        const updatedItemsList = [...itemsList];
 
-        // Encuentra el índice del elemento seleccionado en la lista
-        const selectedItemIndex = updatedItemsList.findIndex(
-            (item) => item.id === itemSelected.id
-        );
+const Details = ({ route, navigation }) => {
+    const { objeto, data, setData } = route.params;
+    const [isLeido, setIsLeido] = useState(objeto.leido); // Estado para controlar el estado leido
 
-        if (selectedItemIndex !== -1) {
-            // Si se encuentra el elemento, alterna el estado "leido"
-            updatedItemsList[selectedItemIndex].leido =
-                !updatedItemsList[selectedItemIndex].leido;
+    const toggleLeido = () => {
+        // Cambiar el estado leido cuando se hace clic en el botón
+        setIsLeido(!isLeido);
 
-            // Actualiza la lista de elementos con el estado modificado
-            setItemsList(updatedItemsList);
-        }
+        // Actualizar el objeto en la lista original en la pantalla Home
+        const updatedData = data.map((item) => {
+            if (item.id === objeto.id) {
+                return { ...item, leido: !isLeido };
+            }
+            return item;
+        });
+
+        // Actualizar el estado data en la pantalla Home con la lista actualizada
+        setData(updatedData);
     };
 
     const returnToHome = () => {
-        // Establece itemSelected en null para regresar a Home
-        setItemSelected(null);
+        navigation.navigate("Home");
     };
 
     return (
         <View style={styles.container}>
+            <Text style={styles.title}>DETALLES</Text>
             <View style={styles.containerRow}>
                 <View style={styles.row}>
                     <Text style={styles.label}>Día:</Text>
-                    <Text style={styles.value}>{itemSelected.dia}</Text>
+                    <Text style={styles.value}>{objeto.dia}</Text>
                 </View>
                 <View style={styles.row}>
                     <Text style={styles.label}>Fecha:</Text>
-                    <Text style={styles.value}>{itemSelected.fecha}</Text>
+                    <Text style={styles.value}>{objeto.fecha}</Text>
                 </View>
                 <View style={styles.row}>
                     <Text style={styles.label}>Hora Extra:</Text>
-                    <Text style={styles.value}>{itemSelected.horaE}</Text>
+                    <Text style={styles.value}>{objeto.horaE}</Text>
                 </View>
                 <View style={styles.row}>
                     <Text style={styles.label}>Horas Normales:</Text>
-                    <Text style={styles.value}>{itemSelected.horasN}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Información:</Text>
-                    <Text style={styles.value}>{itemSelected.info}</Text>
+                    <Text style={styles.value}>{objeto.horasN}</Text>
                 </View>
                 <View style={styles.row}>
                     <Text style={styles.label}>Lugar:</Text>
-                    <Text style={styles.value}>{itemSelected.lugar}</Text>
+                    <Text style={styles.value}>{objeto.lugar}</Text>
+                </View>
+                <View style={styles.row}>
+                    <Text style={styles.label}>Información:</Text>
+                    <Text style={styles.value}>{objeto.info}</Text>
                 </View>
             </View>
-            <Button
-                title={
-                    itemSelected.leido
-                        ? "Marcar como No Leído"
-                        : "Marcar como Leído"
-                }
-                onPress={toggleReadStatus}
-            />
-            <Button title="Volver" onPress={returnToHome} />
+            <View style={styles.button}>
+                <Button
+                    title={
+                        isLeido ? "Marcar como No Leído" : "Marcar como Leído"
+                    }
+                    onPress={toggleLeido} // Llama a la función para cambiar el estado leido
+                />
+            </View>
+            <View style={styles.button}>
+                <Button title="Volver" onPress={returnToHome} />
+            </View>
         </View>
     );
 };

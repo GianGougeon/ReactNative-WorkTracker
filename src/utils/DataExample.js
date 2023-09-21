@@ -1,8 +1,8 @@
 export const DataExample = {
     dia: "",
     fecha: "",
-    horasNormales: "",
-    horaExtras: "",
+    horasN: "",
+    horaE: "",
     lugar: "",
-    descripcion: "",
+    info: "",
   };

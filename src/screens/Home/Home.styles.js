@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         padding: 30,
         paddingTop: 80,
         backgroundColor: "#626264",
+        height: 100,
     },
     title: {
         fontSize: 35,

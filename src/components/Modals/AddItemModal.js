@@ -29,7 +29,7 @@ const AddItemModal = ({
                     placeholder="Horas Normales"
                     value={newItem.horasNormales}
                     onChangeText={(text) =>
-                        onHandleChangeItem(text, "horasNormales")
+                        onHandleChangeItem(text, "horasN")
                     }
                 />
                 <TextInput
@@ -37,7 +37,7 @@ const AddItemModal = ({
                     placeholder="Horas Extras"
                     value={newItem.horaExtras}
                     onChangeText={(text) =>
-                        onHandleChangeItem(text, "horaExtras")
+                        onHandleChangeItem(text, "horaE")
                     }
                 />
                 <TextInput
@@ -51,7 +51,7 @@ const AddItemModal = ({
                     placeholder="Descripción"
                     value={newItem.descripcion}
                     onChangeText={(text) =>
-                        onHandleChangeItem(text, "descripcion")
+                        onHandleChangeItem(text, "info")
                     }
                 />
                 <View
