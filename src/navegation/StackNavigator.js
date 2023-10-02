@@ -1,4 +1,4 @@
-import { Home, Details, Profile } from "../screens/index";
+import { Home, Details, Profile } from "../screens/Index";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 

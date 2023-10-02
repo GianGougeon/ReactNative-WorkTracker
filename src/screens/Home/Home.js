@@ -1,48 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { FlatList, Text, TouchableOpacity, View, Button } from "react-native";
-import json from "../../data/data.json";
-import { styles } from "./Home.styles";
-import AddItemModal from "../../components/Modals/AddItemModal"; // Importa el componente AddItemModal
-import { DataExample } from "../../utils/DataExample";
-
+import { FlatList, Text, TouchableOpacity, View, ScrollView } from "react-native";
+import { styles } from "../../assets/styles/Home.styles";
+import { useSelector } from "react-redux";
 const Home = ({ navigation }) => {
-    const [data, setData] = useState([]);
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [newItem, setNewItem] = useState(DataExample);
-
-    useEffect(() => {
-        setData(json);
-    }, []);
-
-    const agregarNuevoObjeto = () => {
-        // Crea un nuevo objeto con los datos que desees
-        const nuevoObjeto = {
-            id: (data.length + 1).toString(), // Genera un nuevo ID
-            ...newItem,
-            leido: false,
-        };
-
-        // Agrega el nuevo objeto a la lista actual
-        setData([...data, nuevoObjeto]);
-
-        // Cierra el modal
-        setModalVisible(false);
-
-        // Limpia los campos del nuevo objeto
-        setNewItem(DataExample);
-    };
+    const data = useSelector((state) => state.items);
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Text style={styles.title}>HOME</Text>
-            <Button
-                title="Agregar Nuevo Elemento"
-                onPress={() => setModalVisible(true)} // Abre el modal al hacer clic
-            />
             <View style={styles.listContainer}>
                 <FlatList
-                    data={data}
-                    renderItem={({ item, index }) => (
+                    data={data.items}
+                    renderItem={({ item }) => (
                         <TouchableOpacity
                             style={[
                                 styles.gridItem,
@@ -51,8 +19,6 @@ const Home = ({ navigation }) => {
                             onPress={() => {
                                 navigation.navigate("Details", {
                                     objeto: item,
-                                    data, // Pasa la lista de objetos
-                                    setData, // Pasa la función para actualizar la lista
                                 });
                             }}
                         >
@@ -71,17 +37,7 @@ const Home = ({ navigation }) => {
                     numColumns={2}
                 />
             </View>
-            {/* Renderiza el componente AddItemModal */}
-            <AddItemModal
-                visible={isModalVisible}
-                closeModal={() => setModalVisible(false)}
-                newItem={newItem}
-                onHandleChangeItem={(value, field) =>
-                    setNewItem({ ...newItem, [field]: value })
-                }
-                addItem={agregarNuevoObjeto}
-            />
-        </View>
+        </ScrollView>
     );
 };
 

@@ -1,31 +1,25 @@
 import React, { useState } from "react";
 import { View, Text, Button } from "react-native";
-import { styles } from "./Details.styles";
+import { styles } from "../../assets/styles/Details.styles";
+import { useDispatch } from "react-redux";
+import { updateItem } from "../../Actions/itemActions";
 
 const Details = ({ route, navigation }) => {
-    const { objeto, data, setData } = route.params;
-    const [isLeido, setIsLeido] = useState(objeto.leido); // Estado para controlar el estado leido
+    const dispatch = useDispatch();
+    const { objeto } = route.params;
+    const [isRead, setIsRead] = useState(objeto.leido || false);
 
-    const toggleLeido = () => {
-        // Cambiar el estado leido cuando se hace clic en el botón
-        setIsLeido(!isLeido);
+    const handleMarkAsRead = () => {
+        // Actualiza el objeto con el nuevo estado "leído"
+        const updatedObject = { ...objeto, leido: isRead };
 
-        // Actualizar el objeto en la lista original en la pantalla Home
-        const updatedData = data.map((item) => {
-            if (item.id === objeto.id) {
-                return { ...item, leido: !isLeido };
-            }
-            return item;
-        });
+        // Envía la acción para actualizar el objeto en el store
+        dispatch(updateItem(updatedObject));
 
-        // Actualizar el estado data en la pantalla Home con la lista actualizada
-        setData(updatedData);
+        console.log(updatedObject);
+        // Navega de regreso o realiza cualquier otra acción necesaria
+        navigation.goBack();
     };
-
-    const returnToHome = () => {
-        navigation.navigate("Home");
-    };
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>DETALLES</Text>
@@ -55,17 +49,11 @@ const Details = ({ route, navigation }) => {
                     <Text style={styles.value}>{objeto.info}</Text>
                 </View>
             </View>
-            <View style={styles.button}>
-                <Button
-                    title={
-                        isLeido ? "Marcar como No Leído" : "Marcar como Leído"
-                    }
-                    onPress={toggleLeido} // Llama a la función para cambiar el estado leido
-                />
-            </View>
-            <View style={styles.button}>
-                <Button title="Volver" onPress={returnToHome} />
-            </View>
+            <Button
+                title={isRead ? "Marcar como no leído" : "Marcar como leído"}
+                onPress={() => setIsRead((prev) => !prev)}
+            />
+            <Button title="Guardar Cambios" onPress={handleMarkAsRead} />
         </View>
     );
 };
