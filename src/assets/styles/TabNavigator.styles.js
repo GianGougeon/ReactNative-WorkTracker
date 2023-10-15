@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     tabBar: {
-        backgroundColor: "transparent",
+        backgroundColor: "#1F1F1F",
     },
     add: {
-        width: 50,
-        height: 50,
-        backgroundColor: "white",
+        width: 40,
+        height: 40,
+        backgroundColor: "#1F1F1F",
         borderRadius: 50,
         justifyContent: "center",
         alignItems: "center",
@@ -19,5 +19,6 @@ export const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 8,
     },
-    iconContainer: {},
+    iconContainer: {
+    },
 });

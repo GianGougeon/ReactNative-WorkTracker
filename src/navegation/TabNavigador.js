@@ -26,7 +26,7 @@ function BottomTabNavigator() {
                             <Feather
                                 name="home"
                                 size={24}
-                                color={focused ? "red" : "black"}
+                                color={focused ? "red" : "white"}
                             />
                         </View>
                     ),
@@ -42,7 +42,7 @@ function BottomTabNavigator() {
                                 <Feather
                                     name="plus"
                                     size={24}
-                                    color={focused ? "red" : "black"}
+                                    color={focused ? "red" : "white"}
                                 />
                             </View>
                         </View>
@@ -58,7 +58,7 @@ function BottomTabNavigator() {
                             <Feather
                                 name="user"
                                 size={24}
-                                color={focused ? "red" : "black"}
+                                color={focused ? "red" : "white"}
                             />
                         </View>
                     ),
