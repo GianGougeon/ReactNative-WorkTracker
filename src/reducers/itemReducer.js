@@ -1,5 +1,6 @@
 import { ADD_ITEM, UPDATE_ITEM } from "../Actions/types";
-import json from "../data/data.json";
+// import json from "../data/data.json";
+import json from "../data/workTrackerData.json";
 
 const initialState = {
     items: json,

@@ -3,7 +3,7 @@ import AddScreen from '../screens/AddScreen/AddScreen';
 
 const Stack = createNativeStackNavigator();
 
-function AddNavigator() {
+const AddNavigator = () => {
     return (
         <Stack.Navigator
         initialRouteName="Add"

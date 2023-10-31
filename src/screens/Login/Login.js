@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import { insertSession } from "../../db";
 import { setUser } from "../../components/features/auth/authSlice";
-import { styles } from "./../../assets/styles/Login.styles";
+import { styles } from "../../assets/styles/Login.styles";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../services/authApi";
 

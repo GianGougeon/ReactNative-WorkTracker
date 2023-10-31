@@ -1,9 +1,9 @@
 // src/screens/LoginScreen.js
 import React, { useState } from "react";
 import { Button, TextInput, View } from "react-native";
-import firebase from "./../../services/firebase";
+import firebase from "../../services/firebase";
 
-function LoginScreen() {
+const LoginScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -32,6 +32,6 @@ function LoginScreen() {
             <Button title="Login" onPress={handleLogin} />
         </View>
     );
-}
+};
 
 export default LoginScreen;

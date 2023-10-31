@@ -23,7 +23,8 @@ const MainNavigator = () => {
             }
         })();
     }, []);
-    return user ? <BottomTabNavigator /> : <AuthStackNavigator />;
+    // return user ? <BottomTabNavigator /> : <AuthStackNavigator />;
+    return <BottomTabNavigator />
 };
 
 export default MainNavigator;

@@ -1,16 +1,17 @@
 import { View } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import ProfileNavigator from "./ProfileNavigator";
+import ScheduledHoursNavigator from "./ScheduledHoursNavigator";
 import AddNavigator from "./AddNavigator";
 import StackNavigator from "./StackNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { styles } from "./../assets/styles/TabNavigator.styles";
 const BottomTab = createBottomTabNavigator();
 
-function BottomTabNavigator() {
+const BottomTabNavigator = () => {
     return (
         <BottomTab.Navigator
-            initialRouteName="Home"
+            initialRouteName="ScheduledHours"
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
@@ -50,8 +51,8 @@ function BottomTabNavigator() {
                 }}
             />
             <BottomTab.Screen
-                name="Profile"
-                component={ProfileNavigator}
+                name="ScheduledHours"
+                component={ScheduledHoursNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View>
