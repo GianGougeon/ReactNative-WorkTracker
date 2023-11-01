@@ -11,7 +11,7 @@ const BottomTab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
     return (
         <BottomTab.Navigator
-            initialRouteName="ScheduledHours"
+            initialRouteName="Home"
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
@@ -51,7 +51,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="ScheduledHours"
+                name="DetailsMonth"
                 component={ScheduledHoursNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (

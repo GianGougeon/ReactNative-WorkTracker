@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         width: "45%",
         height: 120,
         marginVertical: 10,
-        borderRadius: 10,
+        borderRadius: 2,
         justifyContent: "center",
         backgroundColor: "#2196F3",
         shadowOpacity: 0.5,
@@ -48,5 +48,26 @@ export const styles = StyleSheet.create({
         paddingLeft: 15,
         color: "green",
         fontWeight: "600",
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
     },
 });

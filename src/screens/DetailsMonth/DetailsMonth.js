@@ -7,34 +7,35 @@ import {
     ScrollView,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { getMonth, format } from "date-fns";
 import { styles } from "../../assets/styles/Home.styles";
 import {
     translateDayToSpanish,
     translateMonthToSpanish,
 } from "../../utils/Translations";
-const ScheduledHours = ({ navigation }) => {
+const DetailsMonth = () => {
     const dataJson = useSelector((state) => state.items);
+    const selectedMonth = useSelector((state) => state.month.selectedMonth);
 
-    const currentUserId = "12303412092"; // Por ahora es fijo, pero debes obtenerlo de tu sistema de autenticación.
+    const currentUserId = "12303412092"; // Por ahora es fijo
 
     // Encuentra los datos del usuario actual basados en el ID.
     const currentUserData = dataJson.items.find(
         (user) => user.id === currentUserId
     );
 
-    // Obtén solo los datos del mes actual.
-    const currentMonth = format(new Date(), "MMMM");
+    // Obtén los datos del mes seleccionado.
 
-    console.log(currentMonth, "currentMonth");
     const monthData = currentUserData
-        ? currentUserData.data.months[currentMonth]
+        ? currentUserData.data.months[selectedMonth]
         : [];
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>
-                Horas agendadas - {translateMonthToSpanish(currentMonth)}{" "}
+                Horas agendadas
+            </Text>
+            <Text style={styles.title}>
+                {translateMonthToSpanish(selectedMonth)}{" "}
                 {currentUserData.data.year}
             </Text>
             <View style={styles.listContainer}>
@@ -42,13 +43,7 @@ const ScheduledHours = ({ navigation }) => {
                     data={monthData}
                     renderItem={({ item }) => (
                         <TouchableOpacity
-                            style={styles.gridItem}
-                            onPress={() => {
-                                navigation.navigate("Details", {
-                                    objeto: item,
-                                });
-                            }}
-                        >
+                        style={styles.gridItem}>
                             <View>
                                 <Text style={styles.itemText}>
                                     {translateDayToSpanish(item.day)}
@@ -73,4 +68,4 @@ const ScheduledHours = ({ navigation }) => {
     );
 };
 
-export default ScheduledHours;
+export default DetailsMonth;
