@@ -1,59 +1,88 @@
 import React, { useState } from "react";
-import { View, Text, Button } from "react-native";
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    TextInput,
+} from "react-native";
+import { useSelector } from "react-redux";
+import { translateDayToSpanish } from "../../utils/Translations";
 import { styles } from "../../assets/styles/Details.styles";
-import { useDispatch } from "react-redux";
-import { updateItem } from "../../Actions/itemActions";
 
-const Details = ({ route, navigation }) => {
-    const dispatch = useDispatch();
-    const { objeto } = route.params;
-    const [isRead, setIsRead] = useState(objeto.leido || false);
+const Details = () => {
+    const selectedDetail = useSelector((state) => state.details.selectedDetail);
+    const [isEditingNormal, setIsEditingNormal] = useState(false);
+    const [isEditingExtra, setIsEditingExtra] = useState(false);
+    const [normalHours, setNormalHours] = useState(
+        selectedDetail?.normal_hours
+    );
+    const [extraHours, setExtraHours] = useState(selectedDetail?.extra_hours);
 
-    const handleMarkAsRead = () => {
-        // Actualiza el objeto con el nuevo estado "leído"
-        const updatedObject = { ...objeto, leido: isRead };
-
-        // Envía la acción para actualizar el objeto en el store
-        dispatch(updateItem(updatedObject));
-
-        console.log(updatedObject);
-        // Navega de regreso o realiza cualquier otra acción necesaria
-        navigation.goBack();
+    const handleEditNormal = () => {
+        setIsEditingNormal(!isEditingNormal);
     };
+
+    const handleEditExtra = () => {
+        setIsEditingExtra(!isEditingExtra);
+    };
+
+    if (!selectedDetail) {
+        return (
+            <View style={styles.container}>
+                <Text>No hay detalles disponibles</Text>
+            </View>
+        );
+    }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>DETALLES</Text>
-            <View style={styles.containerRow}>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Día:</Text>
-                    <Text style={styles.value}>{objeto.dia}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Fecha:</Text>
-                    <Text style={styles.value}>{objeto.fecha}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Hora Extra:</Text>
-                    <Text style={styles.value}>{objeto.horaE}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Horas Normales:</Text>
-                    <Text style={styles.value}>{objeto.horasN}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Lugar:</Text>
-                    <Text style={styles.value}>{objeto.lugar}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.label}>Información:</Text>
-                    <Text style={styles.value}>{objeto.info}</Text>
-                </View>
+            <Text style={styles.dateText}>
+                {translateDayToSpanish(selectedDetail.day)}
+            </Text>
+            <Text style={styles.dateText}>
+                {selectedDetail.date.split("-").reverse().join("/")}
+            </Text>
+            <View style={styles.hoursContainer}>
+                {isEditingNormal ? (
+                    <TextInput
+                        value={String(normalHours)}
+                        onChangeText={(text) => setNormalHours(text)}
+                        keyboardType="numeric"
+                        style={{ flex: 1 }}
+                    />
+                ) : (
+                    <Text style={styles.hoursText}>
+                        Horas normales: {normalHours}
+                    </Text>
+                )}
+                <TouchableOpacity
+                    style={styles.editButton}
+                    onPress={handleEditNormal}
+                >
+                    <Text>{isEditingNormal ? "Guardar" : "Editar"}</Text>
+                </TouchableOpacity>
             </View>
-            <Button
-                title={isRead ? "Marcar como no leído" : "Marcar como leído"}
-                onPress={() => setIsRead((prev) => !prev)}
-            />
-            <Button title="Guardar Cambios" onPress={handleMarkAsRead} />
+            <View style={styles.hoursContainer}>
+                {isEditingExtra ? (
+                    <TextInput
+                        value={String(extraHours)}
+                        onChangeText={(text) => setExtraHours(text)}
+                        keyboardType="numeric"
+                        style={{ flex: 1 }}
+                    />
+                ) : (
+                    <Text style={styles.hoursText}>
+                        Horas extras: {extraHours}
+                    </Text>
+                )}
+                <TouchableOpacity
+                    style={styles.editButton}
+                    onPress={handleEditExtra}
+                >
+                    <Text>{isEditingExtra ? "Guardar" : "Editar"}</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };

@@ -1,5 +1,4 @@
-import { ADD_ITEM } from "./types";
-import { UPDATE_ITEM } from "./types";
+import { ADD_ITEM, UPDATE_ITEM } from "./types";
 
 export const addItem = (item) => ({
     type: ADD_ITEM,

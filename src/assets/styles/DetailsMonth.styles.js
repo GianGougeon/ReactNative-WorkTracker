@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     },
     listContainer: {
         marginTop: 25,
-        flexDirection: "column", 
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center", 
     },

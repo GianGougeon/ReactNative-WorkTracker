@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Text, TextInput, Button, View, ScrollView } from "react-native";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../Actions/itemActions";
+import { addItem } from "../../actions/itemActions";
+import { styles } from "../../assets/styles/AddScreen.styles";
 
 import { DataExample } from "../../utils/DataExample";
 
@@ -72,30 +73,5 @@ const AddScreen = ({ navigation }) => {
         </ScrollView>
     );
 };
-const styles = {
-    modalContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "grey",
-    },
-    modalTitle: {
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 20,
-        color: "#fff",
-    },
-    modalInput: {
-        width: "80%",
-        height: 40,
-        borderWidth: 1,
-        borderColor: "#ccc",
-        backgroundColor: "#fff",
-        paddingHorizontal: 20,
-        marginBottom: 10,
-    },
-    addButton: {
-        margin: 10,
-    },
-};
+
 export default AddScreen;

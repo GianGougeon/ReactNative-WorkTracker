@@ -1,43 +1,31 @@
 import { StyleSheet } from "react-native";
+
 export const styles = StyleSheet.create({
-    title: {
-        fontSize: 35,
-        fontWeight: "500",
-        marginBottom: 25,
-        textAlign: "center",
-        color: "#fff",
-    },
     container: {
         flex: 1,
-        padding: 30,
-        paddingTop: 80,
+        padding: 20,
         backgroundColor: "#626264",
     },
-    containerRow: {
-        padding: 20,
-        shadowColor: "#000",
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-        elevation: 5,
-        
+    dateText: {
+        fontSize: 18,
+        marginVertical: 10,
     },
-    row: {
+    hoursContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 10,
+        alignItems: "center",
+        marginVertical: 10,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        borderColor: "#DDD",
+        padding: 10,
     },
-    label: {
+    hoursText: {
         fontSize: 16,
-        fontWeight: "bold",
-        color: "#fff",
     },
-    value: {
-        fontSize: 16,
-        flex: 1,
-        marginLeft: 10,
-        color: "#fff",
+    editButton: {
+        backgroundColor: "#DDD",
+        padding: 5,
+        borderRadius: 5,
     },
-    button:{
-        paddingTop: 20
-    }
 });

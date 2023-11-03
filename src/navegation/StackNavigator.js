@@ -1,4 +1,4 @@
-import { Home, Details, Profile } from "../screens";
+import { Home} from "../screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
@@ -11,8 +11,6 @@ const StackNavigator = () => {
             })}
         >
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Details" component={Details} />
-            {/* <Stack.Screen name="Profile" component={Profile} /> */}
         </Stack.Navigator>
     );
 };

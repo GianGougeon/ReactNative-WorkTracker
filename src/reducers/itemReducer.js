@@ -1,4 +1,4 @@
-import { ADD_ITEM, UPDATE_ITEM } from "../Actions/types";
+import { ADD_ITEM, UPDATE_ITEM, SET_SELECTED_DETAIL } from "../actions/types";
 // import json from "../data/data.json";
 import json from "../data/workTrackerData.json";
 
@@ -19,6 +19,11 @@ const itemReducer = (state = initialState, action) => {
                 items: state.items.map((item) =>
                     item.id === action.payload.id ? action.payload : item
                 ),
+            };
+        case SET_SELECTED_DETAIL:
+            return {
+                ...state,
+                selectedDetail: action.payload,
             };
         default:
             return state;

@@ -6,6 +6,7 @@ import AddNavigator from "./AddNavigator";
 import StackNavigator from "./StackNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { styles } from "./../assets/styles/TabNavigator.styles";
+import Details from "./DetailsNavigator";
 const BottomTab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -38,7 +39,7 @@ const BottomTabNavigator = () => {
                 component={AddNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <View style={styles.add}>
+                        <View style={styles.iconContainer}>
                             <View style={focused ? styles.iconContainer : null}>
                                 <Feather
                                     name="plus"
@@ -54,19 +55,18 @@ const BottomTabNavigator = () => {
                 name="DetailsMonth"
                 component={ScheduledHoursNavigator}
                 options={{
-                    tabBarIcon: ({ focused }) => (
-                        <View>
-                            <Feather
-                                name="user"
-                                size={24}
-                                color={focused ? "red" : "white"}
-                            />
-                        </View>
-                    ),
+                    tabBarButton: () => null,
+                }}
+            />
+            <BottomTab.Screen
+                name="Details"
+                component={Details}
+                options={{
+                    tabBarButton: () => null,
                 }}
             />
         </BottomTab.Navigator>
     );
-}
+};
 
 export default BottomTabNavigator;

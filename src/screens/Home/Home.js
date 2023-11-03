@@ -100,7 +100,7 @@ const Home = ({ navigation }) => {
                         </TouchableOpacity>
                     )}
                     keyExtractor={(item) => item}
-                    numColumns={2}
+                    numColumns={1}
                 />
             </View>
         </ScrollView>
