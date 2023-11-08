@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSession } from "../db";
+import { listenAuthState } from "../components/features/auth/authSlice";
 import AuthStackNavigator from "./AuthStackNavigator";
 import BottomTabNavigator from "./TabNavigador";
 
 const MainNavigator = () => {
     const dispatch = useDispatch();
-    const { user, localId } = useSelector((state) => state.auth);
-    console.log(localId);
+    const { user } = useSelector((state) => state.auth);
+
     useEffect(() => {
         (async () => {
             try {
@@ -23,8 +24,7 @@ const MainNavigator = () => {
             }
         })();
     }, []);
-    // return user ? <BottomTabNavigator /> : <AuthStackNavigator />;
-    return <BottomTabNavigator />
+    return user ? <BottomTabNavigator /> : <AuthStackNavigator />;
 };
 
 export default MainNavigator;

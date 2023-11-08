@@ -9,6 +9,9 @@ dist/
 web-build/
 listaIconos.txt
 test.js
+workTrackerData.json
+useeffect.txt
+tes2t.js
 
 # Native
 *.orig.*

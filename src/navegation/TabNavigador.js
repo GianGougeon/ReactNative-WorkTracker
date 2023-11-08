@@ -35,23 +35,6 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Add"
-                component={AddNavigator}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <View style={styles.iconContainer}>
-                            <View style={focused ? styles.iconContainer : null}>
-                                <Feather
-                                    name="plus"
-                                    size={24}
-                                    color={focused ? "red" : "white"}
-                                />
-                            </View>
-                        </View>
-                    ),
-                }}
-            />
-            <BottomTab.Screen
                 name="DetailsMonth"
                 component={ScheduledHoursNavigator}
                 options={{

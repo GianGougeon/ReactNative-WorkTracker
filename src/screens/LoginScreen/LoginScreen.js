@@ -10,7 +10,6 @@ const LoginScreen = () => {
     const handleLogin = async () => {
         try {
             await firebase.auth().signInWithEmailAndPassword(email, password);
-            // Navega al siguiente screen tras el login exitoso
         } catch (error) {
             console.error(error);
         }

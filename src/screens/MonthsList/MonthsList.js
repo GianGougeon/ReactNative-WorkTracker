@@ -20,7 +20,7 @@ const MonthsList = ({ navigation }) => {
         (user) => user.id === currentUserId
     );
 
-    // Obtén todos los meses.
+    // Todos los meses.
     const months = currentUserData ? Object.keys(currentUserData.data.months) : [];
 
     return (

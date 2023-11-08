@@ -16,34 +16,21 @@ import { setSelectedDetail } from "../../actions/detailsActions";
 import { useDispatch } from "react-redux";
 
 const DetailsMonth = ({navigation}) => {
-    const dataJson = useSelector((state) => state.items);
-    const selectedMonth = useSelector((state) => state.month.selectedMonth);
     const dispatch = useDispatch();
 
-    const currentUserId = "12303412092"; // Por ahora es fijo
+    const selectedMonth = useSelector((state) => state.month.selectedMonth);
 
-    // Encuentra los datos del usuario actual basados en el ID.
-    const currentUserData = dataJson.items.find(
-        (user) => user.id === currentUserId
-    );
-
-    // Obtén los datos del mes seleccionado.
-
-    const monthData = currentUserData
-        ? currentUserData.data.months[selectedMonth]
-        : [];
-
-        
+    
     return (
+        <>
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Horas agendadas</Text>
             <Text style={styles.title}>
-                {translateMonthToSpanish(selectedMonth)}{" "}
-                {currentUserData.data.year}
+                {translateMonthToSpanish(selectedMonth[0].id)}
             </Text>
             <View style={styles.listContainer}>
                 <FlatList
-                    data={monthData}
+                    data={selectedMonth[0].days}
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             style={styles.gridItem}
@@ -73,6 +60,7 @@ const DetailsMonth = ({navigation}) => {
                 />
             </View>
         </ScrollView>
+        </>
     );
 };
 
